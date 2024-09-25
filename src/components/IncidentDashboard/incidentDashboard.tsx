@@ -386,7 +386,7 @@ const priorityMap2 = {
     const updateRate = () => {
       const currentTime = Date.now();
       const timeElapsed = (currentTime - startTime) / 60000; // Convert milliseconds to seconds
-      if (timeElapsed > 1) {
+      if (timeElapsed > 0) {
         setRate(numberOfTickets / timeElapsed); // Calculate tickets per second
       }
     };
@@ -452,7 +452,7 @@ const priorityMap2 = {
                 setNumberOfTickets(prevNumber=>prevNumber+1)
                 copyPrevInfo[i]["total"] = copyPrevInfo[i]["total"] + 1
                 copyPrevInfo[i][priorityMap2[data["priority"]].toLocaleLowerCase()] = copyPrevInfo[i][priorityMap2[data["priority"]].toLocaleLowerCase()]+1
-                return copyPrevInfo
+                // return copyPrevInfo
             }
           })
           return prevInfo
