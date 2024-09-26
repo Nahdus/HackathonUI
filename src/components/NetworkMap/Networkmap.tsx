@@ -107,7 +107,7 @@ function NetworkMap({networkDetails}:any) {
       <Canvas camera={{ position: [0, 0, 5] }}>
 
         {Object.keys(networkMap).map((nodeId:any) => (
-          <NetworkNode key={nodeId} position={[nodeCordinate[nodeId][0], nodeCordinate[nodeId][1],0]} label={nodeId.substring(0,5)} health={nodeAttributes[nodeId]["health"]} type = {nodeAttributes[nodeId]["nodeType"]}/>
+          <NetworkNode key={nodeId} position={[nodeCordinate[nodeId][0], nodeCordinate[nodeId][1],0]} label={nodeId.substring(0,4)} health={nodeAttributes[nodeId]["health"]} type = {nodeAttributes[nodeId]["nodeType"]}/>
         ))}
         {DrawNetworkEdge({networkMap,nodeCordinate})}
         

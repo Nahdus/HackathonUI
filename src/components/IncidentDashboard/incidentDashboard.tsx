@@ -87,16 +87,16 @@ function VulnerabilityAnalysis() {
 
   const calculateVulnerablity=()=>{
     vulnerabilityData.forEach((each)=>{
-      each["status"] = ["increase","decrease","neutral"][Math.floor(Math.random()*2)]
+      each["status"] = ["increase","decrease","neutral"][Math.floor(Math.random()*4)]
       if (each["status"]=="neutral"){
         each["change"] = 0
       }else{
-        each["change"] = Math.floor(Math.random()*5)
+        each["change"] = Math.floor(1+Math.random()*5)
       }
     })
   }
-  setInterval(calculateVulnerablity,120000)
-  
+  //setInterval(calculateVulnerablity,40000)
+  calculateVulnerablity()
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'increase':
@@ -185,9 +185,9 @@ function TicketHistogram({ticketData}:{ticketData:any}) {
       <YAxis/>
       <Tooltip/>
       <Legend/>
-      <Bar dataKey="high" stackId="a" fill="#D2222D" />
-      <Bar dataKey="medium" stackId="a" fill="#FFBF00" />
-      <Bar dataKey="low" stackId="a" fill="#238823" />
+      <Bar dataKey="High" stackId="a" fill="#D2222D" />
+      <Bar dataKey="Medium" stackId="a" fill="#FFBF00" />
+      <Bar dataKey="Low" stackId="a" fill="#238823" />
     </BarChart>
   )
 }
@@ -415,12 +415,12 @@ const priorityMap2 = {
             setHistogramInfo(prevInfo=>{
               if(prevInfo.length==0){
 
-                return [...prevInfo,{"node":eachKey.slice(0,4),"total":0,"low":0,"medium":0,"high":0,"id":eachKey}]
+                return [...prevInfo,{"node":eachKey.slice(0,4),"total":0,"Low":0,"Medium":0,"High":0,"id":eachKey}]
               }
               if (prevInfo.filter(eachData=>{
                 return eachData.id==eachKey
               }).length==0){
-                return [...prevInfo,{"node":eachKey.slice(0,4),"total":0,"low":0,"medium":0,"high":0,"id":eachKey}]
+                return [...prevInfo,{"node":eachKey.slice(0,4),"total":0,"Low":0,"Medium":0,"High":0,"id":eachKey}]
               }
               return prevInfo
             })
@@ -451,7 +451,7 @@ const priorityMap2 = {
                 // {"node":eachKey.slice(0,4),"total":0,"low":0,"medium":0,"high":0,"id":eachKey}
                 setNumberOfTickets(prevNumber=>prevNumber+1)
                 copyPrevInfo[i]["total"] = copyPrevInfo[i]["total"] + 1
-                copyPrevInfo[i][priorityMap2[data["priority"]].toLocaleLowerCase()] = copyPrevInfo[i][priorityMap2[data["priority"]].toLocaleLowerCase()]+1
+                copyPrevInfo[i][priorityMap2[data["priority"]]] = copyPrevInfo[i][priorityMap2[data["priority"]]]+1
                 // return copyPrevInfo
             }
           })
@@ -469,7 +469,7 @@ const priorityMap2 = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <span className="font-bold text-xl">Incident Analytics</span>
+              <span className="font-bold text-xl">Smart Network Monitoring Hub</span>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
@@ -556,7 +556,7 @@ const priorityMap2 = {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p>&copy; 2023 Incident Analytics. All rights reserved.</p>
+              <p>&copy; 2024 Smart Network Monitoring Hub. Powered by Team Sigma.</p>
             </div>
             <div className="flex space-x-4">
               <a href="#" className="hover:underline">Privacy Policy</a>
